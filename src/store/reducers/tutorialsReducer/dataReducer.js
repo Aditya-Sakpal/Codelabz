@@ -45,23 +45,23 @@ const TutorialsDataReducer = (state = initialState, { type, payload }) => {
       };
 
     case actions.DELETE_TUTORIAL_START:
-      return{
+      return {
         ...state,
-        loading:true,
-        error:null
-      }  
-      case actions.DELETE_TUTORIAL_SUCCESS:
-        return{
-          ...state,
-          loading:false,
-          error:null
-      }
-      case actions.DELETE_TUTORIAL_FAIL:
-        return{
-          ...state,
-          loading:false,
-          error:payload
-      }  
+        loading: true,
+        error: null
+      };
+    case actions.DELETE_TUTORIAL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null
+      };
+    case actions.DELETE_TUTORIAL_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: payload
+      };
     default:
       return state;
   }

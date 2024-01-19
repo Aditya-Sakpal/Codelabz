@@ -24,7 +24,7 @@ import ColorPickerModal from "./ColorPickerModal";
 import { Box, Stack } from "@mui/system";
 import { deleteTutorial } from "../../../store/actions";
 import { useHistory } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const EditControls = ({
   isPublished,
@@ -44,7 +44,7 @@ const EditControls = ({
   const firebase = useFirebase();
   const firestore = useFirestore();
   const dispatch = useDispatch();
-  const history=useHistory();
+  const history = useHistory();
   const [viewRemoveStepModal, setViewRemoveStepModal] = useState(false);
   const [viewColorPickerModal, setViewColorPickerModal] = useState(false);
   const [publishLoad, setPublishLoad] = useState(false);
@@ -67,11 +67,11 @@ const EditControls = ({
       }) => data
     );
 
-    useEffect(()=>{
-    console.log(currentTutorialData.tutorial_id)
-    },[])
+    useEffect(() => {
+      console.log(currentTutorialData.tutorial_id);
+    }, []);
 
-    const moveToTrash=async ()=>{
+    const moveToTrash = async () => {
       Swal.fire({
         title: "Are you sure you want to delete this tutorial ?",
         text: "You won't be able to revert this!",
@@ -80,18 +80,21 @@ const EditControls = ({
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
-      }).then( async (result) => {
+      }).then(async result => {
         if (result.isConfirmed) {
           Swal.fire({
             title: "Deleted!",
             text: "Your tutorial has been deleted.",
             icon: "success"
           });
-          await deleteTutorial(currentTutorialData.tutorial_id)(firestore,dispatch,history);
+          await deleteTutorial(currentTutorialData.tutorial_id)(
+            firestore,
+            dispatch,
+            history
+          );
         }
       });
-      
-    }
+    };
 
     return (
       <>
@@ -135,7 +138,7 @@ const EditControls = ({
             style={{ color: "red" }}
             onClick={moveToTrash}
           >
-            <DeleteIcon/> Move to Trash
+            <DeleteIcon /> Move to Trash
           </MenuItem>
         </Menu>
       </>
